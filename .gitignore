@@ -1,0 +1,57 @@
+# AEGIS — Trading Terminal v3
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output
+.next/
+out/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Trading secrets
+credentials/
+*_secret*
+*_private*
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache/
+*.cache
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temp
+tmp/
+temp/
+
+# Data cache (large CSV/JSON)
+data-department/cache/
