@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply bg-bg text-foreground font-sans antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { @apply bg-neon-blue/30 text-foreground; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-fg-muted; }
+}
+
+@layer components {
+  /* Glass card */
+  .glass {
+    @apply bg-surface/70 backdrop-blur-xl border border-border/50 rounded-xl;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+  .glass:hover {
+    @apply border-border/80;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Neon glow variants */
+  .neon-glow-green { box-shadow: 0 0 12px rgba(34, 197, 94, 0.3); }
+  .neon-glow-blue { box-shadow: 0 0 12px rgba(59, 130, 246, 0.3); }
+  .neon-glow-purple { box-shadow: 0 0 12px rgba(168, 85, 247, 0.3); }
+  .neon-glow-cyan { box-shadow: 0 0 12px rgba(6, 182, 212, 0.3); }
+  .neon-glow-pink { box-shadow: 0 0 12px rgba(236, 72, 153, 0.3); }
+
+  /* Round cute buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 cursor-pointer select-none;
+    @apply rounded-full px-5 py-2.5 text-sm;
+    @apply active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .btn-primary {
+    @apply btn bg-neon-blue text-white;
+    @apply hover:bg-neon-blue/90 hover:neon-glow-blue;
+  }
+  .btn-accent {
+    @apply btn bg-accent text-black font-semibold;
+    @apply hover:bg-accent/90 hover:neon-glow-green;
+  }
+  .btn-danger {
+    @apply btn bg-danger/20 text-danger border border-danger/30;
+    @apply hover:bg-danger/30;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-fg-muted border border-border/50;
+    @apply hover:text-foreground hover:border-fg-muted;
+  }
+  .btn-icon {
+    @apply btn rounded-full p-2 min-w-[44px] min-h-[44px];
+  }
+
+  /* Tier badges */
+  .badge-buy { @apply bg-buy/15 text-buy border border-buy/30 rounded-full px-3 py-0.5 text-xs font-mono font-semibold; }
+  .badge-watch { @apply bg-watch/15 text-watch border border-watch/30 rounded-full px-3 py-0.5 text-xs font-mono font-semibold; }
+  .badge-weak { @apply bg-weak/15 text-weak border border-weak/30 rounded-full px-3 py-0.5 text-xs font-mono font-semibold; }
+  .badge-avoid { @apply bg-avoid/15 text-avoid border border-avoid/30 rounded-full px-3 py-0.5 text-xs font-mono font-semibold; }
+
+  /* Status dot */
+  .dot-green { @apply w-2 h-2 rounded-full bg-buy animate-pulse-slow; }
+  .dot-yellow { @apply w-2 h-2 rounded-full bg-watch; }
+  .dot-red { @apply w-2 h-2 rounded-full bg-danger; }
+  .dot-gray { @apply w-2 h-2 rounded-full bg-fg-muted; }
+
+  /* Data table */
+  .data-table {
+    @apply w-full text-sm font-mono;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  .data-table th {
+    @apply text-left text-fg-muted font-medium text-xs uppercase tracking-wider px-4 py-3 bg-muted/50 border-b border-border;
+    font-variant-numeric: tabular-nums;
+  }
+  .data-table td {
+    @apply px-4 py-3 border-b border-border/30 text-foreground;
+    font-variant-numeric: tabular-nums;
+  }
+  .data-table tr:hover td { @apply bg-muted/40; }
+  .data-table tr:nth-child(even) td { @apply bg-surface/30; }
+
+  /* Scrollbar hide utility */
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  /* Tab */
+  .tab {
+    @apply px-4 py-2.5 text-sm font-medium rounded-full transition-all duration-200 cursor-pointer whitespace-nowrap;
+    @apply text-fg-muted hover:text-foreground hover:bg-muted/60;
+    min-height: 40px;
+  }
+  .tab-active {
+    @apply tab bg-neon-blue/15 text-neon-blue border border-neon-blue/30;
+  }
+}
+
+@layer utilities {
+  .tabular-nums { font-variant-numeric: tabular-nums; }
+}
