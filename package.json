@@ -1,0 +1,17 @@
+{
+  "name": "aegis-terminal",
+  "version": "3.0.0",
+  "private": true,
+  "description": "AEGIS — Automated Execution & Global Indicator System",
+  "type": "module",
+  "scripts": {
+    "scan:my": "node my-scan-department/my-scanner.js",
+    "scan:us": "node us-scan-department/us-scanner.js",
+    "backtest": "node backtesting-department/engine.js",
+    "dashboard": "cd dashboard-department && npm run dev",
+    "test": "node --test shared/**/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
