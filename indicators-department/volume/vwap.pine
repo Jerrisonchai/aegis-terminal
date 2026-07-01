@@ -1,0 +1,5 @@
+//@version=5
+// Volume-Weighted Average Price — STUB (pending full implementation)
+// Copy into TradingView Pine Editor for testing
+indicator("Volume-Weighted Average Price", overlay=true)
+plot(close, title="Close") // TODO: Replace with actual indicator logic

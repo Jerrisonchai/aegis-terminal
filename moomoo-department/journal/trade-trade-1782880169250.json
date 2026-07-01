@@ -1,0 +1,14 @@
+{
+  "id": "trade-1782880169250",
+  "ticker": "1155.KL",
+  "side": "BUY",
+  "qty": 4,
+  "entryPrice": 10.74,
+  "stopLoss": 10.53,
+  "takeProfit": 11.17,
+  "riskAmount": 1,
+  "riskReward": 2,
+  "env": "SIMULATE",
+  "timestamp": "2026-07-01T04:29:29.250Z",
+  "status": "PENDING"
+}

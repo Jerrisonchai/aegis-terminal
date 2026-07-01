@@ -1,0 +1,5 @@
+//@version=5
+// RSI Divergence — STUB (pending full implementation)
+// Copy into TradingView Pine Editor for testing
+indicator("RSI Divergence", overlay=true)
+plot(close, title="Close") // TODO: Replace with actual indicator logic

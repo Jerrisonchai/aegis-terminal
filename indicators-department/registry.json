@@ -1,8 +1,4 @@
-// indicators-department/registry.json — Master indicator catalog
-// Dual format: each indicator has Pine Script v5 + Node.js implementation
-
 [
-  // === TREND ===
   {
     "id": "ema-color",
     "name": "Color-Coded EMA",
@@ -69,8 +65,6 @@
     "source": "v2.1 port",
     "subScore": { "buy": 8, "sell": 0, "neutral": 0 }
   },
-
-  // === MOMENTUM ===
   {
     "id": "rsi",
     "name": "Relative Strength Index",
@@ -115,8 +109,6 @@
     "source": "new (YouTube research)",
     "subScore": { "buy": 6, "sell": 0, "neutral": 1 }
   },
-
-  // === VOLATILITY ===
   {
     "id": "bollinger",
     "name": "Bollinger Bands",
@@ -161,8 +153,6 @@
     "source": "new (YouTube research)",
     "subScore": { "buy": 4, "sell": 0, "neutral": 1 }
   },
-
-  // === VOLUME ===
   {
     "id": "obv",
     "name": "On-Balance Volume",
@@ -196,8 +186,6 @@
     "source": "v2.1 port",
     "subScore": { "buy": 5, "sell": 0, "neutral": 2 }
   },
-
-  // === PATTERN ===
   {
     "id": "pivot-points",
     "name": "Hourly Pivot Points",

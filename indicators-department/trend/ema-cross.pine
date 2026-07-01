@@ -1,0 +1,5 @@
+//@version=5
+// EMA Crossover — STUB (pending full implementation)
+// Copy into TradingView Pine Editor for testing
+indicator("EMA Crossover", overlay=true)
+plot(close, title="Close") // TODO: Replace with actual indicator logic

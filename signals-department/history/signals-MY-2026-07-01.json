@@ -1,0 +1,40 @@
+[
+  {
+    "id": "sig-MY-1155.KL-1782880163489",
+    "ticker": "1155.KL",
+    "market": "MY",
+    "composite": 72,
+    "tier": "BUY",
+    "tierColor": "#22C55E",
+    "close": 10.74,
+    "indicators": [
+      "emaColor",
+      "rsi"
+    ],
+    "timestamp": "2026-07-01T04:29:23.488Z"
+  },
+  {
+    "id": "sig-MY-0097.KL-1782880163489",
+    "ticker": "0097.KL",
+    "market": "MY",
+    "composite": 58,
+    "tier": "BUY",
+    "tierColor": "#22C55E",
+    "close": 0.85,
+    "indicators": [
+      "momentumRatio"
+    ],
+    "timestamp": "2026-07-01T04:29:23.488Z"
+  },
+  {
+    "id": "sig-MY-0128.KL-1782880163489",
+    "ticker": "0128.KL",
+    "market": "MY",
+    "composite": 40,
+    "tier": "WATCH",
+    "tierColor": "#EAB308",
+    "close": 1.22,
+    "indicators": [],
+    "timestamp": "2026-07-01T04:29:23.488Z"
+  }
+]

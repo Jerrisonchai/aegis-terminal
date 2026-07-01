@@ -1,0 +1,5 @@
+//@version=5
+// Pivot Points — STUB (pending full implementation)
+// Copy into TradingView Pine Editor for testing
+indicator("Pivot Points", overlay=true)
+plot(close, title="Close") // TODO: Replace with actual indicator logic

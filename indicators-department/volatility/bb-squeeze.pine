@@ -1,0 +1,5 @@
+//@version=5
+// Bollinger Band Squeeze — STUB (pending full implementation)
+// Copy into TradingView Pine Editor for testing
+indicator("Bollinger Band Squeeze", overlay=true)
+plot(close, title="Close") // TODO: Replace with actual indicator logic

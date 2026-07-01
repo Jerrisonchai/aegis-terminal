@@ -1,0 +1,5 @@
+//@version=5
+// 20-Day Breakout — STUB (pending full implementation)
+// Copy into TradingView Pine Editor for testing
+indicator("20-Day Breakout", overlay=true)
+plot(close, title="Close") // TODO: Replace with actual indicator logic

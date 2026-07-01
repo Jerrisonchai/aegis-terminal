@@ -1,0 +1,5 @@
+//@version=5
+// Golden Cross — STUB (pending full implementation)
+// Copy into TradingView Pine Editor for testing
+indicator("Golden Cross", overlay=true)
+plot(close, title="Close") // TODO: Replace with actual indicator logic
