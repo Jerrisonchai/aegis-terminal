@@ -13,8 +13,8 @@
 | 6 | Backtesting Engine | ✅ Done | 2026-07-01 | 2026-07-01 | `6df2619` |
 | 7 | Signals Pipeline | ✅ Done | 2026-07-01 | 2026-07-01 | `6df2619` |
 | 8 | Moomoo Paper Trading | ✅ Done | 2026-07-01 | 2026-07-01 | `6df2619` |
-| 9 | TradingView Integration | ⏳ | - | - | - |
-| 10 | Dashboard & Cron | ⏳ | - | - | - |
+| 9 | Dashboard & Cron | ⏳ | - | - | - |
+| 10 | TradingView Integration | ⏳ | - | - | - |
 
 ## Phase 1 Checklist ✅
 - [x] 13 department directories created

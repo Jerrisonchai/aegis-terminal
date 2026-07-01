@@ -232,20 +232,13 @@ Each indicator is a self-contained module:
 - [ ] Risk management (1% per trade, R:R 2:1 enforcement)
 - [ ] **Guard**: Paper-only by default, live requires explicit approval
 
-### Phase 9: TradingView Department
-- [ ] TradingView account integration (Jerrison's account)
-- [ ] Pine Script library sync (TV ↔ local)
-- [ ] Chart link generation (one-click open TV chart for any ticker)
-- [ ] Webhook receiver (TV alerts → our signal pipeline)
-- [ ] AI prompt templates for indicator generation
-- [ ] TV → Converter → Node.js workflow automation
-
-### Phase 10: Dashboard & Cron Department
+### Phase 9: Dashboard & Cron Department
 - [ ] **Dashboard Department** — Full Next.js + framer-motion web app
   - Overview, Signals, Scanners, Indicators, Backtesting, Tickers, Positions, Cron, Settings
   - Real-time data via API endpoints
   - Mobile-responsive (check positions on phone)
   - Dark OLED theme, glass-morphism, live pulse
+  - Start with mock/dummy data for rapid UI iteration
 - [ ] **Cron Department** — Unified job management
   - Job registry with schedules, dependencies, retry logic
   - Status dashboard (green/yellow/red per job)
@@ -254,6 +247,14 @@ Each indicator is a self-contained module:
   - Self-healing: restart failed jobs, escalate after threshold
 - [ ] API layer — Dashboard ↔ all departments via REST/WebSocket
 - [ ] Deployment to Vercel
+
+### Phase 10: TradingView Department
+- [ ] TradingView account integration (Jerrison's account)
+- [ ] Pine Script library sync (TV ↔ local)
+- [ ] Chart link generation (one-click open TV chart for any ticker)
+- [ ] Webhook receiver (TV alerts → our signal pipeline)
+- [ ] AI prompt templates for indicator generation
+- [ ] TV → Converter → Node.js workflow automation
 
 ---
 
@@ -316,8 +317,8 @@ Each indicator is a self-contained module:
 | 6 | Backtest produces valid win rates and equity curves for 3 strategies |
 | 7 | Telegram signal delivered within 10s of scan completion |
 | 8 | Paper trade placed via OpenD and tracked with P&L |
-| 9 | TV chart opens from dashboard with 1 click |
-| 10 | Full dashboard live, all 9 pages functional, all crons green |
+| 9 | Full dashboard live, all 9 pages functional, all crons green |
+| 10 | TV chart opens from dashboard with 1 click |
 
 ---
 
@@ -350,8 +351,8 @@ Each indicator is a self-contained module:
 
 ## 10. OPEN QUESTIONS
 
-1. **TradingView account**: Can we use `jerrcoc1@gmail.com` Google OAuth? → *Try before Phase 9*
-2. **Dashboard host**: Vercel (public) vs local-only? → *Jerrison decides at Phase 10*
+1. **TradingView account**: Can we use `jerrcoc1@gmail.com` Google OAuth? → *Try before Phase 10*
+2. **Dashboard host**: Vercel (public) vs local-only? → *Jerrison decides at Phase 9*
 3. **Historical data depth**: 30 days? 90 days? 1 year?
 4. **Penny stocks**: Keep penny scanner separate or integrate into US scan?
 5. **Alert channels**: Telegram only, or add email + dashboard native?
