@@ -1,0 +1,31 @@
+//@version=5
+// ADR % Used Indicator
+// Shows what percentage of Average Daily Range has been consumed today
+// >80% = extended. Good for profit target placement.
+// Copy into TradingView Pine Editor
+
+indicator("ADR % Used", overlay=false)
+
+adrPeriod = input.int(14, "ADR Period", minval=1)
+extLevel = input.float(80, "Extended Level %", minval=50, maxval=100)
+earlyLevel = input.float(40, "Early Level %", minval=10, maxval=50)
+
+// Calculate daily range
+dailyRange = high - low
+
+// Calculate ADR
+adr = ta.sma(dailyRange, adrPeriod)
+
+// Percent used
+pctUsed = adr > 0 ? (dailyRange / adr) * 100 : 0
+
+// Plot
+hline(extLevel, "Extended", color=color.red, linestyle=hline.style_dashed)
+hline(50, "Midpoint", color=color.gray, linestyle=hline.style_dotted)
+hline(earlyLevel, "Early", color=color.green, linestyle=hline.style_dashed)
+
+plot(pctUsed, "ADR %", color=pctUsed > extLevel ? color.red : pctUsed < earlyLevel ? color.green : color.yellow, linewidth=2)
+
+// Background zones
+bgcolor(pctUsed > extLevel ? color.new(color.red, 90) : na)
+bgcolor(pctUsed < earlyLevel ? color.new(color.green, 90) : na)

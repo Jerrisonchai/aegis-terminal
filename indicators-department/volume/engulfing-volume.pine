@@ -1,0 +1,35 @@
+//@version=5
+// High-Volume Engulfing Indicator
+// Marks bullish engulfing candles where volume > 5-bar average
+// Copy into TradingView Pine Editor
+
+indicator("High-Volume Engulfing", overlay=true)
+
+volLookback = input.int(5, "Volume Lookback", minval=2, maxval=20)
+volMultiplier = input.float(1.5, "Volume Multiplier", minval=1.0, maxval=5.0, step=0.1)
+
+// Engulfing conditions
+bullishEngulf = close[1] < open[1] and close > open and open < close[1] and close > open[1]
+bearishEngulf = close[1] > open[1] and close < open and open > close[1] and close < open[1]
+
+// Volume condition
+avgVol = ta.sma(volume, volLookback)
+highVol = volume > avgVol * volMultiplier
+
+// Signals
+bullSignal = bullishEngulf and highVol
+bearSignal = bearishEngulf and highVol
+
+plotshape(bullSignal, title="Bullish Engulfing + Vol", location=location.belowbar,
+  color=color.green, style=shape.triangleup, size=size.large,
+  text="BULL", textcolor=color.white)
+
+plotshape(bearSignal, title="Bearish Engulfing + Vol", location=location.abovebar,
+  color=color.red, style=shape.triangledown, size=size.large,
+  text="BEAR", textcolor=color.white)
+
+// Volume ratio for coloring bars
+barcolor(bullSignal ? color.green : bearSignal ? color.red : na)
+
+alertcondition(bullSignal, title="Bull Engulfing + Volume", message="High volume bullish engulfing detected")
+alertcondition(bearSignal, title="Bear Engulfing + Volume", message="High volume bearish engulfing detected")

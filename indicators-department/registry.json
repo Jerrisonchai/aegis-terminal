@@ -1,0 +1,212 @@
+// indicators-department/registry.json — Master indicator catalog
+// Dual format: each indicator has Pine Script v5 + Node.js implementation
+
+[
+  // === TREND ===
+  {
+    "id": "ema-color",
+    "name": "Color-Coded EMA",
+    "category": "trend",
+    "description": "EMA line that changes color: green when price > EMA (bullish), red when price < EMA (bearish)",
+    "params": { "period": 20 },
+    "outputType": "overlay",
+    "files": { "node": "trend/ema-color.js", "pine": "trend/ema-color.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 6, "sell": 3, "neutral": 2 }
+  },
+  {
+    "id": "sma-cross",
+    "name": "SMA Crossover",
+    "category": "trend",
+    "description": "Golden cross (MA50 > MA200) and death cross detection",
+    "params": { "fast": 50, "slow": 200 },
+    "outputType": "signal",
+    "files": { "node": "trend/sma-cross.js", "pine": "trend/sma-cross.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 5, "sell": 0, "neutral": 0 }
+  },
+  {
+    "id": "ema-cross",
+    "name": "EMA Crossover",
+    "category": "trend",
+    "description": "Fast EMA crosses above/below slow EMA",
+    "params": { "fast": 9, "slow": 21 },
+    "outputType": "signal",
+    "files": { "node": "trend/ema-cross.js", "pine": "trend/ema-cross.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 5, "sell": 0, "neutral": 0 }
+  },
+  {
+    "id": "golden-cross",
+    "name": "Golden Cross",
+    "category": "trend",
+    "description": "MA50 crossing above MA200 — long-term bullish signal",
+    "params": { "fast": 50, "slow": 200 },
+    "outputType": "signal",
+    "files": { "node": "trend/golden-cross.js", "pine": "trend/golden-cross.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 8, "sell": 0, "neutral": 0 }
+  },
+  {
+    "id": "above-all-ma",
+    "name": "Above All Moving Averages",
+    "category": "trend",
+    "description": "Price above SMA20, SMA50, SMA200 — strong uptrend confirmation",
+    "params": { "periods": [20, 50, 200] },
+    "outputType": "signal",
+    "files": { "node": "trend/above-all-ma.js", "pine": "trend/above-all-ma.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 7, "sell": 0, "neutral": 0 }
+  },
+  {
+    "id": "breakout-20",
+    "name": "20-Day Breakout",
+    "category": "trend",
+    "description": "Price breaks above 20-day high — momentum breakout signal",
+    "params": { "period": 20 },
+    "outputType": "signal",
+    "files": { "node": "trend/breakout-20.js", "pine": "trend/breakout-20.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 8, "sell": 0, "neutral": 0 }
+  },
+
+  // === MOMENTUM ===
+  {
+    "id": "rsi",
+    "name": "Relative Strength Index",
+    "category": "momentum",
+    "description": "RSI with oversold (<30) buy and overbought (>70) sell signals",
+    "params": { "period": 14, "oversold": 30, "overbought": 70 },
+    "outputType": "oscillator",
+    "files": { "node": "momentum/rsi.js", "pine": "momentum/rsi.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 7, "sell": 0, "neutral": 2 }
+  },
+  {
+    "id": "stochastic",
+    "name": "Stochastic Oscillator",
+    "category": "momentum",
+    "description": "%K/%D with oversold (<20) and overbought (>80) zones",
+    "params": { "k": 14, "d": 3, "oversold": 20, "overbought": 80 },
+    "outputType": "oscillator",
+    "files": { "node": "momentum/stochastic.js", "pine": "momentum/stochastic.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 6, "sell": 0, "neutral": 2 }
+  },
+  {
+    "id": "rsi-divergence",
+    "name": "RSI Divergence",
+    "category": "momentum",
+    "description": "Price makes lower low but RSI makes higher low — bullish divergence",
+    "params": { "period": 14, "lookback": 20 },
+    "outputType": "signal",
+    "files": { "node": "momentum/rsi-divergence.js", "pine": "momentum/rsi-divergence.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 7, "sell": 0, "neutral": 0 }
+  },
+  {
+    "id": "momentum-ratio",
+    "name": "Bull/Bear Momentum Ratio",
+    "category": "momentum",
+    "description": "Measures bullish vs bearish candle body sizes over N bars. Ratio > 1 = bulls stronger",
+    "params": { "period": 10 },
+    "outputType": "oscillator",
+    "files": { "node": "momentum/momentum-ratio.js", "pine": "momentum/momentum-ratio.pine" },
+    "source": "new (YouTube research)",
+    "subScore": { "buy": 6, "sell": 0, "neutral": 1 }
+  },
+
+  // === VOLATILITY ===
+  {
+    "id": "bollinger",
+    "name": "Bollinger Bands",
+    "category": "volatility",
+    "description": "Price position relative to BB — mean reversion near lower band, squeeze detection",
+    "params": { "period": 20, "stdDev": 2 },
+    "outputType": "overlay",
+    "files": { "node": "volatility/bollinger.js", "pine": "volatility/bollinger.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 7, "sell": 0, "neutral": 2 }
+  },
+  {
+    "id": "atr",
+    "name": "Average True Range",
+    "category": "volatility",
+    "description": "ATR expansion (>1.5x average) signals volatility breakout",
+    "params": { "period": 14, "expansionFactor": 1.5 },
+    "outputType": "oscillator",
+    "files": { "node": "volatility/atr.js", "pine": "volatility/atr.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 5, "sell": 0, "neutral": 1 }
+  },
+  {
+    "id": "bb-squeeze",
+    "name": "Bollinger Band Squeeze",
+    "category": "volatility",
+    "description": "BB bandwidth < 20% of average — low volatility, expecting expansion",
+    "params": { "period": 20, "squeezeThreshold": 0.2 },
+    "outputType": "signal",
+    "files": { "node": "volatility/bb-squeeze.js", "pine": "volatility/bb-squeeze.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 5, "sell": 0, "neutral": 0 }
+  },
+  {
+    "id": "adr-percent",
+    "name": "ADR % Used",
+    "category": "volatility",
+    "description": "% of Average Daily Range already consumed — helps set profit targets. >80% = extended",
+    "params": { "period": 14 },
+    "outputType": "oscillator",
+    "files": { "node": "volatility/adr-percent.js", "pine": "volatility/adr-percent.pine" },
+    "source": "new (YouTube research)",
+    "subScore": { "buy": 4, "sell": 0, "neutral": 1 }
+  },
+
+  // === VOLUME ===
+  {
+    "id": "obv",
+    "name": "On-Balance Volume",
+    "category": "volume",
+    "description": "OBV trend divergence — OBV rising while price flat = accumulation",
+    "params": { "lookback": 20 },
+    "outputType": "oscillator",
+    "files": { "node": "volume/obv.js", "pine": "volume/obv.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 6, "sell": 0, "neutral": 1 }
+  },
+  {
+    "id": "engulfing-volume",
+    "name": "High-Volume Engulfing",
+    "category": "volume",
+    "description": "Bullish engulfing candle with volume > 5-bar average — strong reversal signal",
+    "params": { "volumeLookback": 5 },
+    "outputType": "signal",
+    "files": { "node": "volume/engulfing-volume.js", "pine": "volume/engulfing-volume.pine" },
+    "source": "new (YouTube research)",
+    "subScore": { "buy": 7, "sell": 0, "neutral": 0 }
+  },
+  {
+    "id": "vwap",
+    "name": "Volume-Weighted Average Price",
+    "category": "volume",
+    "description": "Price distance from VWAP — above = bullish intraday, below = bearish",
+    "params": {},
+    "outputType": "overlay",
+    "files": { "node": "volume/vwap.js", "pine": "volume/vwap.pine" },
+    "source": "v2.1 port",
+    "subScore": { "buy": 5, "sell": 0, "neutral": 2 }
+  },
+
+  // === PATTERN ===
+  {
+    "id": "pivot-points",
+    "name": "Hourly Pivot Points",
+    "category": "pattern",
+    "description": "Support/resistance pivot levels calculated on hourly timeframe",
+    "params": { "timeframe": "1h" },
+    "outputType": "overlay",
+    "files": { "node": "pattern/pivot-points.js", "pine": "pattern/pivot-points.pine" },
+    "source": "new (YouTube research)",
+    "subScore": { "buy": 4, "sell": 0, "neutral": 1 }
+  }
+]

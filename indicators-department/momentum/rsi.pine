@@ -1,0 +1,23 @@
+//@version=5
+// RSI (Relative Strength Index)
+// Classic momentum oscillator. Oversold < 30 = buy. Overbought > 70 = sell.
+// Copy into TradingView Pine Editor
+
+indicator("RSI", overlay=false)
+
+length = input.int(14, "RSI Period", minval=1)
+overbought = input.int(70, "Overbought", minval=50, maxval=90)
+oversold = input.int(30, "Oversold", minval=10, maxval=50)
+
+rsiLine = ta.rsi(close, length)
+
+// Plot
+hline(overbought, "Overbought", color=color.red, linestyle=hline.style_dashed)
+hline(50, "Midline", color=color.gray, linestyle=hline.style_dotted)
+hline(oversold, "Oversold", color=color.green, linestyle=hline.style_dashed)
+
+plot(rsiLine, "RSI", color=rsiLine > overbought ? color.red : rsiLine < oversold ? color.green : color.blue, linewidth=2)
+
+// Background zones
+bgcolor(rsiLine > overbought ? color.new(color.red, 90) : na)
+bgcolor(rsiLine < oversold ? color.new(color.green, 90) : na)

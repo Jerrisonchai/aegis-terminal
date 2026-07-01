@@ -1,0 +1,33 @@
+//@version=5
+// Bull/Bear Momentum Ratio
+// Measures who is stronger — bulls or bears — over N bars
+// Ratio > 0.65 = Bulls dominant. Ratio < 0.35 = Bears dominant.
+// Copy into TradingView Pine Editor
+
+indicator("Momentum Ratio", overlay=false)
+
+length = input.int(10, "Lookback Period", minval=1)
+signalLevel = input.float(0.65, "Bull Threshold", minval=0.5, maxval=0.9, step=0.05)
+bearLevel = input.float(0.35, "Bear Threshold", minval=0.1, maxval=0.5, step=0.05)
+
+// Calculate bull & bear body sizes
+body = math.abs(close - open)
+isBull = close > open ? 1 : 0
+isBear = close < open ? 1 : 0
+
+bullBodies = math.sum(isBull * body, length)
+bearBodies = math.sum(isBear * body, length)
+
+total = bullBodies + bearBodies
+ratio = total > 0 ? bullBodies / total : 0.5
+
+// Plot
+hline(0.65, "Bull Threshold", color=color.green, linestyle=hline.style_dashed)
+hline(0.50, "Neutral", color=color.gray, linestyle=hline.style_dotted)
+hline(0.35, "Bear Threshold", color=color.red, linestyle=hline.style_dashed)
+
+plot(ratio, "Momentum Ratio", color=ratio > 0.65 ? color.green : ratio < 0.35 ? color.red : color.yellow, linewidth=2)
+
+// Background color zones
+bgcolor(ratio > signalLevel ? color.new(color.green, 90) : na)
+bgcolor(ratio < bearLevel ? color.new(color.red, 90) : na)
